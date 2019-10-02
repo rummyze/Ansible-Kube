@@ -2,7 +2,7 @@
 # ansible_user: root
 
 # Kubernetes
-kube_version: v1.13.0
+kube_version: v1.16.0
 token: b0f7b8.8d1767876297d85c
 
 # 1.8.x feature: --feature-gates SelfHosting=true
@@ -39,8 +39,8 @@ kube_addon_dir: /etc/kubernetes/addon
 
 # Additional feature to install
 additional_features:
-  helm: true
-  metallb: true
+  helm: false
+  metallb: false
   healthcheck: false
 
 # temporary directory used by additional features

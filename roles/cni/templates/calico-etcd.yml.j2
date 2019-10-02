@@ -1,7 +1,7 @@
 # This manifest installs the Calico etcd on the kubeadm master.  This uses a DaemonSet
 # to force it to run on the master even when the master isn't schedulable, and uses
 # nodeSelector to ensure it only runs on the master.
-apiVersion: extensions/v1beta1
+apiVersion:  apps/v1
 kind: DaemonSet
 metadata:
   name: calico-etcd
@@ -68,14 +68,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    k8s-app: calico-etcd
   name: calico-etcd
   namespace: kube-system
 spec:
   # Select the calico-etcd pod running on the master.
-  selector:
-    k8s-app: calico-etcd
+  #selector:
+    #k8s-app: calico-etcd
   # This ClusterIP needs to be known in advance, since we cannot rely
   # on DNS to get access to etcd.
   clusterIP: {{ calico_etcd_service }}
